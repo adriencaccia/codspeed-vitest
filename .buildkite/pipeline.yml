@@ -7,6 +7,7 @@ steps:
       curl -fsSL https://get.pnpm.io/install.sh | bash -;
       # source "$HOME/.bashrc";
       # pnpm env use --global 18;
+      /root/.local/share/pnpm/pnpm setup;
       /root/.local/share/pnpm/pnpm i -g pnpm;
       pnpm env use --global 18;
       codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- pnpm vitest bench;
