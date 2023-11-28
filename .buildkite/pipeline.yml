@@ -9,7 +9,7 @@ steps:
       # pnpm env use --global 18;
       /root/.local/share/pnpm/pnpm setup;
       /root/.local/share/pnpm/pnpm i -g pnpm;
-      pnpm env use --global 18;
-      codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- pnpm vitest bench;
+      /root/.local/share/pnpm/pnpm env use --global 18;
+      codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- /root/.local/share/pnpm/pnpm vitest bench;
     env:
       SHELL: /bin/bash
