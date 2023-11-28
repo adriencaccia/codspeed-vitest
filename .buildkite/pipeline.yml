@@ -1,0 +1,20 @@
+steps:
+  - label: ":hammer: Install pnpm and node"
+    key: install-node
+    command: |
+      curl -fsSL https://get.pnpm.io/install.sh | bash -
+      source /root/.bashrc
+      pnpm env use --global 18
+
+  - label: ":rabbit: Install CodSpeed Runner"
+    key: install-codspeed
+    command: |
+      curl --proto '=https' --tlsv1.2 -LsSf https://github.com/CodSpeedHQ/runner/releases/download/v2.0.1-beta.1/codspeed-runner-installer.sh | bash
+
+  # wait for all the previous steps to finish
+  - wait
+
+  - label: ":rabbit2: Run benchmarks with CodSpeed"
+    key: benchmarks
+    command: |
+      codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- pnpm vitest bench
