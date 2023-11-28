@@ -4,6 +4,7 @@ steps:
     command: |
       curl --proto '=https' --tlsv1.2 -LsSf https://github.com/CodSpeedHQ/runner/releases/download/v2.0.1-beta.1/codspeed-runner-installer.sh | bash;
       source "$HOME/.cargo/env";
+      sudo apt-get install unzip -y;
       curl -fsSL https://fnm.vercel.app/install | bash;
       fnm install;
       corepack enable;
