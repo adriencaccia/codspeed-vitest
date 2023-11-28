@@ -6,6 +6,7 @@ steps:
       source "$HOME/.cargo/env";
       apt install unzip -y;
       curl -fsSL https://fnm.vercel.app/install | bash;
+      source "$HOME/.bashrc";
       fnm install;
       corepack enable;
       codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- /root/.local/share/pnpm/pnpm vitest bench;
