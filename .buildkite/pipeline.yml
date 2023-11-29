@@ -14,13 +14,14 @@ steps:
       curl --proto '=https' --tlsv1.2 -LsSf https://github.com/CodSpeedHQ/runner/releases/download/v2.0.1-beta.2/codspeed-runner-installer.sh | bash;
       source "$HOME/.cargo/env";
 
-      # Install fnm, node and pnpm
+      # Install fnm, node, pnpm and the deps
       apt install unzip -y;
       curl -fsSL https://fnm.vercel.app/install | bash;
       sed -e '/[ -z "$PS1" ] && return/s/^/#/g' -i /root/.bashrc # remove early return in .bashrc when running in non-interactive mode, so that the source command below works
       source "$HOME/.bashrc";
       fnm install --resolve-engines;
       corepack enable;
+      pnpm install;
 
       # Run benchmarks
       codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- pnpm vitest bench;
