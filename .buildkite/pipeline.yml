@@ -8,6 +8,8 @@ steps:
       apt install unzip -y;
       curl -fsSL https://fnm.vercel.app/install | bash;
       cat "$HOME/.bashrc";
+      sed -e '/[ -z "$PS1" ] && return/s/^/#/g' -i /root/.bashrc
+      cat "$HOME/.bashrc";
       source "$HOME/.bashrc";
       fnm install;
       corepack enable;
