@@ -4,7 +4,9 @@ steps:
       setarch --list
       setarch linux64 echo "linux64 works"
       setarch x86_64 echo "x86_64 works"
-      ARCH="x86_64" setarch x86_64 -R echo "x86_64 works with flags"
+      setarch x86_64 -R echo "x86_64 works with -R"
+      ARCH="x86_64" setarch x86_64 echo "x86_64 works with ARCH"
+      ARCH="x86_64" setarch x86_64 -R echo "x86_64 works with all flags"
   - label: ":rabbit2: Run benchmarks with CodSpeed"
     key: benchmarks
     command: |
