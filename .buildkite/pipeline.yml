@@ -2,17 +2,19 @@ steps:
   - label: ":rabbit2: Run benchmarks with CodSpeed"
     key: benchmarks
     command: |
-      set -x;
+      # Install CodSpeed runner
       curl --proto '=https' --tlsv1.2 -LsSf https://github.com/CodSpeedHQ/runner/releases/download/v2.0.1-beta.1/codspeed-runner-installer.sh | bash;
       source "$HOME/.cargo/env";
+
+      # Install fnm, node and pnpm
       apt install unzip -y;
       curl -fsSL https://fnm.vercel.app/install | bash;
-      cat "$HOME/.bashrc";
-      sed -e '/[ -z "$PS1" ] && return/s/^/#/g' -i /root/.bashrc
-      cat "$HOME/.bashrc";
+      sed -e '/[ -z "$PS1" ] && return/s/^/#/g' -i /root/.bashrc # remove early return in .bashrc when running in non-interactive mode, so that the source command below works
       source "$HOME/.bashrc";
       fnm install --resolve-engines;
       corepack enable;
-      codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- /root/.local/share/pnpm/pnpm vitest bench;
+
+      # Run benchmarks
+      codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- pnpm vitest bench;
     env:
       SHELL: /bin/bash
