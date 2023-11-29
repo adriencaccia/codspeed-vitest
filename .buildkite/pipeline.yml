@@ -2,10 +2,12 @@ steps:
   - label: ":rabbit2: Run benchmarks with CodSpeed"
     key: benchmarks
     command: |
+      set -x;
       curl --proto '=https' --tlsv1.2 -LsSf https://github.com/CodSpeedHQ/runner/releases/download/v2.0.1-beta.1/codspeed-runner-installer.sh | bash;
       source "$HOME/.cargo/env";
       apt install unzip -y;
       curl -fsSL https://fnm.vercel.app/install | bash;
+      cat "$HOME/.bashrc";
       source "$HOME/.bashrc";
       fnm install;
       corepack enable;
