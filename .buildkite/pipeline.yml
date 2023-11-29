@@ -2,7 +2,8 @@ steps:
   - label: setarch
     command: |
       setarch --list
-      setarch linux64 echo "Linux 64-bit works"
+      setarch linux64 echo "linux64 works"
+      setarch x86_64 echo "x86_64 works"
   - label: ":rabbit2: Run benchmarks with CodSpeed"
     key: benchmarks
     command: |
