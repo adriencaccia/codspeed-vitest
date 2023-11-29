@@ -19,3 +19,4 @@ steps:
       codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- pnpm vitest bench;
     env:
       SHELL: /bin/bash
+      CODSPEED_LOG: debug
