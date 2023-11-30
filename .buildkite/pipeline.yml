@@ -3,7 +3,7 @@ steps:
     key: benchmarks
     command: |
       # Install CodSpeed runner
-      curl -fsSL https://github.com/CodSpeedHQ/runner/releases/download/v2.0.1-beta.5/codspeed-runner-installer.sh | bash;
+      curl -fsSL https://github.com/CodSpeedHQ/runner/releases/download/v2.0.0-beta.1/codspeed-runner-installer.sh | bash;
       source "$HOME/.cargo/env";
 
       # Install fnm, node, pnpm and the deps
@@ -16,7 +16,7 @@ steps:
       pnpm install;
 
       # Run benchmarks
-      codspeed-runner --token=$CODSPEED_TOKEN --upload-url=$CODSPEED_UPLOAD_URL -- pnpm vitest bench;
+      codspeed-runner --token=$CODSPEED_TOKEN -- pnpm vitest bench;
     env:
       SHELL: /bin/bash
       CODSPEED_LOG: debug
