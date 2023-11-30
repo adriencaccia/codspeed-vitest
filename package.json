@@ -26,5 +26,9 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
     "vitest": "1.0.0-beta.4"
+  },
+  "packageManager": "pnpm@8.3.1",
+  "engines": {
+    "node": "18.15.0"
   }
 }
