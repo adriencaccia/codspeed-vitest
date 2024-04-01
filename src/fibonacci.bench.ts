@@ -7,6 +7,6 @@ describe("fibonacci", () => {
   });
 
   bench("fibo 15", () => {
-    fibonacci(15);
+    fibonacci(20);
   });
 });
